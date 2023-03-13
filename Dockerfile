@@ -1,14 +1,9 @@
 FROM ubuntu
 RUN apt-get update
 RUN apt install nginx -y
-RUN cd /var/www/html/
-RUN rm -rf /*.html
+WORKDIR /var/www/html/
+RUN rm -rf *
 COPY ./index.html  /var/www/html/
-RUN 
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 EXPOSE 80
-
-
-
-
-
 
